@@ -1,0 +1,20 @@
+{
+  "name": "aff2e",
+  "version": "3.0.0",
+  "description": "CSS compiler for the Aff system",
+  "scripts": {
+    "build": "sass src/scss/aff2e.scss css/aff2e.css --style=expanded --no-source-map",
+    "watch": "sass src/scss/aff2e.scss css/aff2e.css --style=expanded --source-map --watch",
+    "createSymlinks": "node src/create-symlinks.mjs"
+  },
+  "browserslist": [
+    "last 3 versions"
+  ],
+  "author": "Asacolips",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "sass": "^1.53.0",
+    "js-yaml": "^4.1.0"
+  }
+}
