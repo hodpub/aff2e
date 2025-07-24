@@ -1,0 +1,45 @@
+dialog.dialog {
+  border-image-source: url(../assets/components/background.webp);
+  border-image-slice: 42 39 53 63 fill;
+  border-image-width: 42px 39px 53px 63px;
+  border-image-outset: 25px 25px 25px 25px;
+  border-image-repeat: round round;
+  border-style: solid;
+  box-shadow: 0 0 50px #000;
+
+  --color-header-background: transparent;
+  --color-light-1: black;
+  --color-text-primary: black;
+  --color-form-label: black;
+  --color-form-label-hover: black;
+
+  input {
+    --input-text-color: black;
+    --input-background-color: white;
+    --input-border-color: black;
+  }
+
+  select {
+    @extend %select;
+  }
+
+  footer button {
+    @extend %button;
+  }
+}
+
+.copyright-dialog {
+  img {
+    max-height: 150px;
+    margin: 10px auto;
+
+    &.hod {
+      width: 60%;
+      margin-top: 20px;
+    }
+  }
+
+  p {
+    font-size: 18px;
+  }
+}

@@ -1,0 +1,35 @@
+<div class="main">
+  {{>"systems/aff2e/templates/actor/header.hbs" }}
+  <div class="form-group">
+    <label>{{localize "AFF.Actor.character.FIELDS.description.label"}}</label>
+    <input class="simple" name='system.description' type='text' value='{{system.description}}' placeholder='description' />
+  </div>
+  <div class="form-group">
+    <label>{{localize "AFF.Actor.character.FIELDS.race.label"}}</label>
+    <input class="simple" name='system.race' type='text' value='{{system.race}}' placeholder='Race' />
+  </div>
+  <div class="form-group">
+    <label>{{localize "AFF.Actor.character.FIELDS.socialClass.label"}}</label>
+    <input class="simple" name='system.socialClass' type='text' value='{{system.socialClass}}'
+      placeholder='Social Class' />
+  </div>
+  <div class="form-group">
+    <label>{{localize "AFF.Actor.character.FIELDS.age.label"}}</label>
+    <input class="simple" name='system.age' type='text' value='{{system.age}}' placeholder='Age' />
+    <label>{{localize "AFF.Actor.character.FIELDS.sex.label"}}</label>
+    <input class="simple" name='system.sex' type='text' value='{{system.sex}}' placeholder='M/F' />
+  </div>
+
+  {{#unless limited}}
+  <div class="grid grid-gap-5">
+    {{#each system.characteristics as | characteristic name |}}
+    {{>"systems/aff2e/templates/actor/characteristics.hbs" name=name value=characteristic rollable=(isInList name
+    ../config.Actors.rollableCharacteristics)}}
+    {{/each}}
+    <div class="flag single characteristic experience">
+      <label>{{localize "AFF.Actor.character.FIELDS.experience.label"}}</label>
+      <input class="simple" name='system.experience' type='number' value='{{system.experience}}' />
+    </div>
+  </div>
+  {{/unless}}
+</div>

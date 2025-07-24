@@ -1,0 +1,72 @@
+%banner {
+  background: none;
+  border-image-slice: 0 15 0 15 fill;
+  border-image-width: 0px 15px 0px 15px;
+  border-image-outset: 0px 0px 0px 0px;
+  border-image-repeat: round stretch;
+  border-image-source: url(../assets/components/field-156.webp);
+
+  &.square {
+    border-image-source: url(../assets/components/field-23.webp);
+    width: 28px;
+    padding: 0;
+    text-align: center;
+  }
+
+  &.small {
+    border-image-source: url(../assets/components/field-57.webp);
+    width: 57px;
+    padding: 0 10px;
+  }
+
+  &.medium {
+    border-image-source: url(../assets/components/field-81.webp);
+  }
+
+  &.large {
+    border-image-source: url(../assets/components/field-200.webp);
+  }
+
+  &.huge {
+    border-image-source: url(../assets/components/field-216.webp);
+  }
+
+  &.simple {
+    border-image: unset;
+    padding: 0;
+    height: calc(var(--input-height) - 12px);
+  }
+}
+
+input[type="text"],
+input[type="number"] {
+  @extend %banner;
+  --input-text-color: black;
+  padding-left: 20px;
+  outline: 0;
+}
+
+select {
+  @extend %select;
+}
+
+label.banner {
+  @extend %banner;
+
+  height: var(--input-height);
+  line-height: var(--input-height);
+  padding: 0 20px;
+}
+
+div.textarea {
+  border-image-slice: 10 17 13 17;
+  border-image-width: 10px 17px 13px 17px;
+  border-image-outset: 0px 0px 0px 0px;
+  border-image-repeat: round round;
+  border-image-source: url(../assets/components/textarea.webp);
+  padding: 20px;
+
+  &.fill {
+    height: 95%;
+  }
+}

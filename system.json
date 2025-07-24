@@ -2,6 +2,11 @@
   "id": "aff2e",
   "title": "Advanced Fighting Fantasy - 2nd Edition",
   "description": "The Advanced Fighting Fantasy - 2nd Edition system for FoundryVTT!",
+  "version": "1.0.0",
+  "compatibility": {
+    "minimum": "13.346",
+    "verified": "13.346"
+  },
   "authors": [
     {
       "name": "Cussa Mitre",
@@ -9,52 +14,24 @@
       "discord": "CussaMitre"
     }
   ],
-  "documentTypes": {
-    "Actor": {
-        "character": {
-            "htmlFields": ["biography"]
-        },
-        "npc": {
-            "htmlFields": ["biography"]
-        }
-    },
-    "Item": {
-        "feature": {
-            "htmlFields": ["description"]
-        },
-        "gear": {
-            "htmlFields": ["description"]
-        },
-        "spell": {
-            "htmlFields": ["description"]
-        }
-    }
-  },
-  "flags": {
-    "hotReload": {
-      "extensions": ["css", "html", "hbs", "json"],
-      "paths": ["css", "lang", "templates"]
-    }
-  },
-  "url": "Replace this with a link to your public repository",
+  "url": "https://github.com/hodpub/aff2e",
   "license": "LICENSE.txt",
   "readme": "README.md",
-  "bugs": "Replace this with a link to file issues or tickets",
+  "bugs": "https://github.com/hodpub/aff2e/issues",
   "changelog": "CHANGELOG.md",
   "media": [
     {
       "type": "setup",
-      "url": "systems/aff2e/assets/anvil-impact.png",
-      "thumbnail": "systems/aff2e/assets/anvil-impact.png"
+      "url": "systems/aff2e/assets/aff2e.webp",
+      "thumbnail": "systems/aff2e/assets/aff2e.webp"
     }
   ],
-  "version": "3.0.0",
-  "compatibility": {
-    "minimum": "13.342",
-    "verified": "13.342"
-  },
-  "esmodules": ["module/aff2e.mjs"],
-  "styles": ["css/aff2e.css"],
+  "esmodules": [
+    "system/aff2e.mjs"
+  ],
+  "styles": [
+    "css/aff2e.css"
+  ],
   "languages": [
     {
       "lang": "en",
@@ -65,15 +42,99 @@
   "packs": [],
   "packFolders": [],
   "socket": false,
-  "manifest": "Replace this with a link to the /latest release system.json so people can receive updates after they've installed the system",
-  "download": "This must link to a .zip file of the current version",
-  "background": "systems/aff2e/assets/anvil-impact.png",
+  "manifest": "https://github.com/hodpub/aff2e/releases/latest/download/system.json",
+  "download": "https://github.com/hodpub/aff2e/releases/latest/download/system.zip",
+  "background": "systems/aff2e/assets/aff2e.webp",
   "grid": {
     "type": 1,
-    "distance": 5,
-    "units": "ft",
+    "distance": 1,
+    "units": "m",
     "diagonals": 0
   },
-  "primaryTokenAttribute": "stamina",
-  "secondaryTokenAttribute": "power"
+  "primaryTokenAttribute": "characteristics.stamina",
+  "secondaryTokenAttribute": "characteristics.magicPoints",
+  "documentTypes": {
+    "Actor": {
+      "character": {
+        "htmlFields": [
+          "biography",
+          "treasures"
+        ]
+      },
+      "npc": {
+        "htmlFields": [
+          "biography",
+          "special"
+        ]
+      },
+      "antiHero": {
+        "htmlFields": [
+          "biography",
+          "treasures"
+        ]
+      }
+    },
+    "Item": {
+      "equipment": {
+        "htmlFields": [
+          "description"
+        ]
+      },
+      "specialSkill": {
+        "htmlFields": [
+          "description"
+        ]
+      },
+      "weapon": {
+        "htmlFields": [
+          "description"
+        ]
+      },
+      "armour": {
+        "htmlFields": [
+          "description"
+        ]
+      },
+      "minorSpell": {
+        "htmlFields": [
+          "description"
+        ]
+      },
+      "wizardrySpell": {
+        "htmlFields": [
+          "description"
+        ]
+      },
+      "sorcerySpell": {
+        "htmlFields": [
+          "description"
+        ]
+      },
+      "priestAbility": {
+        "htmlFields": [
+          "description"
+        ]
+      },
+      "talent": {
+        "htmlFields": [
+          "description"
+        ]
+      }
+    }
+  },
+  "flags": {
+    "hotReload": {
+      "extensions": [
+        "css",
+        "html",
+        "hbs",
+        "json"
+      ],
+      "paths": [
+        "css",
+        "lang",
+        "templates"
+      ]
+    }
+  }
 }

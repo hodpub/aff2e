@@ -1,0 +1,9 @@
+<div class="item-details" data-roll-type='item' data-action='roll' data-item-id='{{item._id}}'
+  data-document-class='Item'>
+  {{!-- <div class="img">
+    <img src='{{item.img}}' data-tooltip='{{item.name}}' width='31' height='31' />
+  </div> --}}
+  <img src='{{item.img}}' data-tooltip='{{item.name}}' width='34' height='34' />
+  <label class="banner huge rollable" {{#if item.tooltip}}data-tooltip-html="{{item.tooltip}}"
+    {{/if}}>{{item.name}}</label>
+</div>

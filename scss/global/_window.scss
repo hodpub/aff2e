@@ -1,12 +1,78 @@
-.window-app {
-  font-family: $font-primary;
+body {
+  --font-body: "Palatino Linotype";
+  --font-sans: "Palatino Linotype";
+  --input-height: 30px;
 }
 
 .rollable {
+
   &:hover,
   &:focus {
-    color: $c-black;
+    // color: $c-black;
     text-shadow: 0 0 10px red;
     cursor: pointer;
+  }
+}
+
+.sheet.actor #context-menu {
+  --background-color: white;
+  --hover-text-color: white;
+}
+
+.meter {
+  position: relative;
+  border: 2px solid black;
+  margin-bottom: 5px;
+
+  // &:after {
+  //   content: "";
+  //   border-image-slice: 0 27 0 27 fill;
+  //   border-image-width: 0px 27px 0px 27px;
+  //   border-image-outset: 0px 0px 0px 0px;
+  //   border-image-repeat: stretch stretch;
+  //   border-image-source: url(../assets/frames/meter.webp);
+  //   border-style: solid;
+  //   position: absolute;
+  //   z-index: 2;
+  //   height: 41px;
+  //   width: 100%;
+  //   top: 0;
+  // }
+
+  .inner {
+    background: #666;
+    z-index: 1;
+    position: relative;
+    height: 20px;
+  }
+}
+
+.choice-dialog {
+  .form-footer {
+    flex-direction: column;
+    padding: 5%;
+    padding-top: 0;
+
+    button {
+      width: 100%;
+    }
+
+    // &:before,
+    // &:after {
+    //   content: "";
+    //   background: url(../assets/decorations/divider4.svg) no-repeat;
+    //   background-position: center;
+
+    //   height: 20px;
+    //   width: 100%;
+    // }
+
+    // &:before {
+    //   margin-bottom: 10px;
+    // }
+
+    // &:after {
+    //   margin-top: 10px;
+    // }
   }
 }

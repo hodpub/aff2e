@@ -1,0 +1,11 @@
+<div class="item-details draggable" {{#unless dontRoll}} data-roll-type='item' data-action='roll' {{/unless}}
+  data-item-id='{{item._id}}' data-document-class='Item'>
+  {{!-- <div class="img">
+    <img src='{{item.img}}' data-tooltip='{{item.name}}' width='31' height='31' />
+  </div> --}}
+  <img src='{{item.img}}' data-tooltip='{{item.name}}' width='34' height='34' />
+  <label class="banner {{#unless dontRoll}}rollable{{/unless}}" {{#if item.tooltip}}data-tooltip-html="{{item.tooltip}}"
+    {{/if}}>{{item.name}}</label>
+  <label class="banner medium">{{ifThen this.value this.value (ifThen item.system.value item.system.value
+    this.value)}}</label>
+</div>

@@ -1,0 +1,10 @@
+<div>
+  <div class="item-title">
+    <label>{{localize "TYPES.Item.specialSkill"}}</label>
+  </div>
+  <div class="list scrollable">
+    {{#each skills as | item |}}
+    {{> "systems/aff2e/templates/actor/item-with-value.hbs" item=item}}
+    {{/each}}
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<section class='tab attributes scrollable {{tab.cssClass}}' data-group='primary' data-tab='attributes'>
+  <div class="form-group">
+    <label>{{localize "AFF.Item.Weapon.FIELDS.damage.label"}}</label>
+    {{#each system.damage as | item |}}
+    <input class="square" type="number" name="system.damage.{{@index}}" value="{{item}}" />
+    {{/each}}
+  </div>
+  <div class="grid">
+    {{formGroup systemFields.equipped value=system.equipped}}
+    {{formGroup systemFields.magical value=system.magical}}
+    {{formGroup systemFields.attackRollBonus value=system.attackRollBonus}}
+    {{formGroup systemFields.damageRollBonus value=system.damageRollBonus}}
+  </div>
+  {{priceInfo systemFields.price value=system.price}}
+  {{formGroup systemFields.quantity value=system.quantity}}
+  {{formGroup systemFields.specialSkill value=system.specialSkill}}
+  {{formGroup systemFields.ammunition value=system.ammunition}}
+</section>

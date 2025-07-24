@@ -8,12 +8,18 @@
 @import 'utils/variables';
 
 /* Global styles */
+@import 'global/chat';
 @import 'global/window';
 @import 'global/grid';
 @import 'global/flex';
+@import 'global/dialog';
+
+@import 'components/roll-dialog';
 
 /* Styles limited to aff2e sheets */
 .aff2e {
+  @import 'components/components';
+  @import 'components/sheet';
   @import 'components/forms';
   @import 'components/resource';
   @import 'components/items';

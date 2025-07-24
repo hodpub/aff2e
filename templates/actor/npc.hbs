@@ -1,0 +1,12 @@
+<div class="main">
+  {{>"systems/aff2e/templates/actor/header.hbs" }}
+
+  {{#unless limited}}
+  <div class="grid grid-gap-5">
+    {{>"systems/aff2e/templates/actor/characteristics.hbs" name="skill" value=system.characteristics.skill
+    rollable=true}}
+    {{>"systems/aff2e/templates/actor/characteristics.hbs" name="stamina" value=system.characteristics.stamina
+    rollable=false}}
+  </div>
+  {{/unless}}
+</div>

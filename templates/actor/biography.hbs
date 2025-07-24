@@ -1,14 +1,16 @@
 {{! Biography Tab }}
-<section
-  class='tab biography scrollable {{tab.cssClass}}'
-  data-group='primary'
-  data-tab='biography'
->
-  {{! Editors must receive enriched text data from getData to properly handle rolls, UUID links, etc. }}
-  {{#if editable}} 
-    <prose-mirror name="system.biography" data-document-uuid="{{actor.uuid}}" value="{{system.biography}}" collaborate="true" toggled="true">
+<section class='tab biography scrollable {{tab.cssClass}}' data-group='primary' data-tab='biography'>
+  <div class="textarea fill">
+    <div class="item-title">
+      <label>{{localize "AFF.Biography"}}</label>
+    </div>
+    {{! Editors must receive enriched text data from getData to properly handle rolls, UUID links, etc. }}
+    {{#if editable}}
+    <prose-mirror name="system.biography" data-document-uuid="{{actor.uuid}}" value="{{system.biography}}"
+      collaborate="true" toggled="true">
       {{{enrichedBiography}}}
     </prose-mirror>
-  {{else}} {{{enrichedBiography}}}
-  {{/if}}
+    {{else}} {{{enrichedBiography}}}
+    {{/if}}
+  </div>
 </section>

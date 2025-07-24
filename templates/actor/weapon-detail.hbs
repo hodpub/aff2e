@@ -1,0 +1,7 @@
+<div class="weapon-detail" {{#if roll}} data-roll-type='item' data-action='roll' {{/if}} data-item-id='{{item._id}}'
+  data-document-class='Item'>
+  <label class="banner huge {{#if roll}}rollable{{/if}}" data-tooltip="{{item.name}}">{{item.name}}</label>
+  {{#each values as |damage|}}
+  <label class="banner square" type="number" value="{{damage}}" readonly>{{damage}}</label>
+  {{/each}}
+</div>

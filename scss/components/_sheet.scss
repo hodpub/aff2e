@@ -1,0 +1,240 @@
+&.sheet {
+
+  --color-light-1: black;
+  --color-text-primary: black;
+  --color-text-secondary: black;
+  --color-text-emphatic: black;
+  --color-scrollbar: black;
+
+  &.application .controls-dropdown .header-control>button {
+    --color-text-primary: white;
+  }
+
+  border-image-source: url(../assets/components/background.webp);
+  border-image-slice: 42 39 53 63 fill;
+  border-image-width: 42px 39px 53px 63px;
+  border-image-outset: 25px 25px 25px 25px;
+  border-image-repeat: round round;
+  border-style: solid;
+  box-shadow: 0 0 50px #000;
+
+  header {
+    background: unset;
+  }
+
+  .window-content {
+    padding: 0;
+  }
+
+  div.profile-img {
+    margin: 0 auto 10px;
+    width: 216px;
+    height: 216px;
+
+    border-image-slice: 15 fill;
+    border-image-width: 15px;
+    border-image-outset: 0px;
+    border-image-repeat: round stretch;
+    border-image-source: url(../assets/components/img-profile.webp);
+
+    img {
+      mask-image: url(../assets/components/img-profile-mask.webp);
+      object-fit: contain;
+      object-position: 50% 50%;
+    }
+  }
+
+  %horizontal-rule {
+    background: url(../assets/components/div-h.webp) no-repeat;
+    background-size: 100% 7px;
+    background-position: center;
+    min-height: 10px;
+    margin: 10px 0;
+  }
+
+  %vertical-rule {
+    background: url(../assets/components/div-v.webp) no-repeat;
+    background-size: 8px 97%;
+    background-position: center;
+  }
+
+  div.flag {
+    border-image-slice: 9 22 16 20;
+    border-image-width: 9px 22px 16px 20px;
+    border-image-outset: 0px 0px 0px 0px;
+    border-image-repeat: round stretch;
+    border-image-source: url(../assets/components/flag.webp);
+
+    padding: 5px 7px 15px 7px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+
+
+    label {
+      flex: 1 1 60%;
+      font-style: italic;
+      font-size: var(--font-size-13);
+
+      &:nth-child(1) {
+        font-weight: bold;
+        font-style: normal;
+        text-transform: uppercase;
+        flex: 2 1 100%;
+      }
+    }
+
+    input {
+      flex: 1 1 40%;
+    }
+
+    &.single {
+      input {
+        flex: 1 1 100%;
+        text-align: center;
+      }
+    }
+  }
+
+  div.form-group {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 5px;
+
+    label {
+      flex: none;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    div.form-fields {
+      flex: 1;
+
+      .tags {
+        order: 2;
+      }
+    }
+
+    &.title {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+
+      * {
+        text-align: center;
+        font-size: 20px;
+
+      }
+
+      input {
+        height: 25px;
+      }
+    }
+  }
+
+  nav.sheet-tabs {
+    border: unset;
+  }
+
+  section.tab {
+    flex: 1;
+  }
+
+  prose-mirror {
+    height: 100%;
+  }
+
+  &.actor section.window-content {
+    flex: 1;
+    display: grid;
+    display: grid;
+    grid-template-columns: 240px 26px 1fr;
+    grid-template-rows: 20px 30px 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    padding-top: 10px;
+
+    div.main {
+      grid-area: 1 / 1 / 4 / 2;
+
+      img.logo {
+        width: 80%;
+        margin: 0 auto;
+      }
+    }
+
+    div.vertical-rule {
+      @extend %vertical-rule;
+      grid-area: 1 / 2 / 4 / 3;
+    }
+
+    div.horizontal-rule {
+      @extend %horizontal-rule;
+      grid-area: 2 / 3 / 3 / 4;
+    }
+
+    section.tab {
+      grid-area: 3 / 3 / 4 / 4;
+    }
+
+    div.list {
+
+      div.weapon-detail,
+      div.weapon-title {
+        display: flex;
+        gap: 5px;
+
+        &:not(:last-child) {
+          margin-bottom: 10px;
+        }
+      }
+
+      div.weapon-title {
+        label {
+          font-weight: bold;
+          text-transform: uppercase;
+
+          &:first-child {
+            flex: 159px;
+          }
+
+          &:not(:first-child) {
+            width: 28px;
+            text-align: center;
+          }
+        }
+      }
+
+      div.weapon-detail {
+        label:first-child {
+          flex: 159px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+
+  &.actor.antiHero {
+
+    .characteristic.luck,
+    .characteristic.experience {
+      display: none;
+    }
+  }
+
+  &.actor.npc{
+    menu.controls-dropdown li[data-action="calculateMP"] {
+      display: none;
+    }
+  }
+
+  table {
+    --table-header-bg-color: white;
+    --table-row-color-odd: rgba(255, 255, 255, 0.8);
+    --table-row-color-even: white;
+  }
+}

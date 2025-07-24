@@ -1,0 +1,16 @@
+<div class="attack-result">
+  <div class="attacker {{attackRollClass}}">
+    <label class="name">{{attacker}}</label>
+    <label>{{localize (concat "AFF.Roll.Result." attackResult)}}</label>
+    <label class="value">{{attackRoll}}</label>
+  </div>
+  <span class="vs">vs</span>
+  <div class="defender {{defenseRollClass}}">
+    <label class="value">{{defenseRoll}}</label>
+    <label>{{localize (concat "AFF.Roll.Result." defenseResult)}}</label>
+    <label class="name">{{defender}}</label>
+  </div>
+  <div class="actor-image">
+    <img src="{{defenderImg}}" alt="{{defender}}" class="actor-icon" />
+  </div>
+</div>

@@ -1,0 +1,36 @@
+.roll-dialog {
+  .title {
+    font-size: var(--font-size-32);
+    text-align: center;
+  }
+
+  .target {
+    font-size: var(--font-size-28);
+    text-align: center;
+
+    .hidden {
+      display: none;
+    }
+
+    .fa-regular {
+      opacity: 0.5;
+    }
+  }
+
+  div.breakdown div.form-group label:nth-child(2) {
+    flex: 1 1 50%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .form-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+
+    button {
+      @extend %button;
+    }
+  }
+}

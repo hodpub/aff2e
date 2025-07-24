@@ -1,0 +1,53 @@
+<section class='tab equipments scrollable {{tab.cssClass}}' data-group='primary' data-tab='equipments'>
+  {{#if equipments}}
+  <div class="item-title">
+    <label>{{localize "AFF.Equipments"}}</label>
+  </div>
+  {{> "systems/aff2e/templates/actor/meter.hbs" label="AFF.Actor.character.FIELDS.slots.label"
+  current=system.slots.current max=system.slots.max}}
+  <div class="list">
+    {{#each equipments as | item |}}
+    {{> "systems/aff2e/templates/actor/item-with-value.hbs" item=item value=item.system.quantity dontRoll=true}}
+    {{/each}}
+  </div>
+  <div class="horizontal-rule"></div>
+  {{/if}}
+  <div class="grid">
+    <div class="form-group">
+      <label>{{localize "AFF.Item.base.FIELDS.price.gp"}}</label>
+      <div class="form-fields">
+        <input type="number" name="system.gp" value="{{system.gp}}" min="0" step="1">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>{{localize "AFF.Item.base.FIELDS.price.sp"}}</label>
+      <div class="form-fields">
+        <input type="number" name="system.sp" value="{{system.sp}}" min="0" step="1">
+      </div>
+    </div>
+  </div>
+  <div class="form-group" style="margin-bottom: 10px;">
+    <label>{{localize "AFF.Actor.character.FIELDS.provisions.label"}}</label>
+    <div class="form-fields" style="display: flex; align-items: center; gap: 10px;">
+      <input type="number" name="system.provisions" value="{{system.provisions}}" min="0" step="1">
+      <label data-action="roll" data-roll-type="consume" class="rollable draggable" data-drag="special" data-macro-name="{{localize 
+        "AFF.Actor.character.FIELDS.provisions.consume"}}">{{localize
+        "AFF.Actor.character.FIELDS.provisions.consume"}}</label> | <label data-action="roll" data-roll-type="rest"
+        class="rollable draggable" data-drag="special" data-macro-name="{{localize 
+        "AFF.Actor.character.FIELDS.rest"}}">{{localize
+        "AFF.Actor.character.FIELDS.rest"}}</label>
+    </div>
+  </div>
+  <div class="textarea">
+    <div class="form-group">
+      <label>{{localize "AFF.Treasures"}}</label>
+    </div>
+    {{#if editable}}
+    <prose-mirror name="system.treasures" data-document-uuid="{{actor.uuid}}" value="{{system.treasures}}"
+      collaborate="true" toggled="true">
+      {{{enrichedTreasures}}}
+    </prose-mirror>
+    {{else}} {{{enrichedTreasures}}}
+    {{/if}}
+  </div>
+</section>

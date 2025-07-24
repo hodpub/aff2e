@@ -32,10 +32,6 @@
   height: 100%;
 }
 
-.tab {
-  max-height: 400px;
-}
-
 .tab.biography {
   flex: 1;
 
@@ -46,10 +42,73 @@
 
 .tox {
   .tox-editor-container {
-    background: $c-white;
+    // background: $c-white;
   }
 
   .tox-edit-area {
     padding: 0 8px;
   }
+}
+
+div.item-title label {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+div.item-details {
+  display: flex;
+  // position: relative;
+  gap: 5px;
+
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+
+  img {
+    margin-left: 10px;
+    z-index: 2;
+    border: 2px solid black;
+    margin-top: -2px;
+  }
+
+  div.img {
+    width: 31px;
+    // position: absolute;
+    margin-left: 15px;
+    border-image-slice: 5 fill;
+    border-image-width: 5px;
+    border-image-outset: 0px;
+    border-image-repeat: stretch stretch;
+    border-image-source: url(../assets/components/img-line.webp);
+    z-index: 2;
+
+    img {
+      mask-image: url(../assets/components/img-line-mask.webp);
+      z-index: 1;
+    }
+  }
+
+  label:first-of-type {
+    padding-left: 47px;
+    margin-left: -47px;
+    flex: 1 1 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  label:nth-of-type(2) {
+    @extend .small;
+    text-align: center;
+  }
+}
+
+%item-with-value {
+  height: 150px;
+
+
+}
+
+.scrollable {
+  margin-right: unset;
 }

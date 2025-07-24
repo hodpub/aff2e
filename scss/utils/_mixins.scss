@@ -14,3 +14,24 @@
 @mixin hide {
   display: none;
 }
+
+%button {
+  flex-grow: 1;
+  flex-basis: 45%;
+  border: 3px solid black;
+  background: transparent;
+  color: black;
+  font-weight: bold;
+  padding: 15px 0;
+
+  &:hover {
+    background: black;
+    color: white;
+  }
+}
+
+%select {
+  --input-background-color: white;
+  --input-border-color: black;
+  --input-text-color: black;
+}

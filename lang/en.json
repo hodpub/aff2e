@@ -1,12 +1,91 @@
 {
   "AFF": {
+    "Characteristics": {
+      "skill.label": "Skill",
+      "stamina.label": "Stamina",
+      "luck.label": "Luck",
+      "magic.label": "Magic",
+      "magicPoints.label": "Magic Points",
+      "initial": "Initial:",
+      "current": "Current:"
+    },
     "Ability": {
-      "Str": { "long": "Strength", "abbr": "str" },
-      "Con": { "long": "Constitution", "abbr": "con" },
-      "Dex": { "long": "Dexterity", "abbr": "dex" },
-      "Int": { "long": "Intelligence", "abbr": "int" },
-      "Wis": { "long": "Wisdom", "abbr": "wis" },
-      "Cha": { "long": "Charisma", "abbr": "cha" }
+      "Str": {
+        "long": "Strength",
+        "abbr": "str"
+      },
+      "Con": {
+        "long": "Constitution",
+        "abbr": "con"
+      },
+      "Dex": {
+        "long": "Dexterity",
+        "abbr": "dex"
+      },
+      "Int": {
+        "long": "Intelligence",
+        "abbr": "int"
+      },
+      "Wis": {
+        "long": "Wisdom",
+        "abbr": "wis"
+      },
+      "Cha": {
+        "long": "Charisma",
+        "abbr": "cha"
+      }
+    },
+    "Settings": {
+      "minorMagicSkill": {
+        "label": "Minor Magic Special Skill",
+        "hint": "Sets the Minor Magic Special Skill used for the rolls."
+      },
+      "wizardrySkill": {
+        "label": "Wizardry Magic Special Skill",
+        "hint": "Sets the Wizardry Magic Special Skill used for the rolls."
+      },
+      "sorcerySkill": {
+        "label": "Sorcery Magic Special Skill",
+        "hint": "Sets the Sorcery Magic Special Skill used for the rolls."
+      },
+      "priestSkill": {
+        "label": "Priest Magic Special Skill",
+        "hint": "Sets the Priest Magic Special Skill used for the rolls."
+      },
+      "strengthSkill": {
+        "label": "Strength Special Skill",
+        "hint": "Sets the Strength Special Skill used for the rolls."
+      },
+      "armourSkill": {
+        "label": "Armour Special Skill",
+        "hint": "Sets the Armour Special Skill used for the rolls."
+      },
+      "armourDifference": {
+        "label": "Armour Difference",
+        "hint": "AFF core defines a minimum requirement for SKILL + Armour to use that without penalties. Expansions can change that value."
+      },
+      "fumbleTable": {
+        "label": "Fumble Table",
+        "hint": "Sets the Fumble Rollable Table. On a fumble, the system will roll on this table to determine the fumble result."
+      },
+      "oopsTable": {
+        "label": "Oops Table",
+        "hint": "Sets the Oops Rollable Table. On a fumble during magic, the system will roll on this table to determine the Oops result."
+      },
+      "criticalTable": {
+        "label": "Critical Table",
+        "hint": "Sets the Critical Rollable Table. On a critical, the system will roll on this table to determine the critical result."
+      }
+    },
+    "Roll": {
+      "Result": {
+        "0": "Fail: ",
+        "1": "Success: ",
+        "2": "Critical: ",
+        "99": "",
+        "-1": "Fumble: "
+      },
+      "bonus": "Bonus"
     },
     "SheetLabels": {
       "Actor": "Aff Actor Sheet",
@@ -15,34 +94,71 @@
     "Actor": {
       "Tabs": {
         "Biography": "Biography",
-        "Features": "Features",
-        "Gear": "Gear",
-        "Spells": "Spells",
-        "Effects": "Effects"
+        "CombatSkills": "Combat & Skills",
+        "Magic": "Magic",
+        "Equipments": "Equipment",
+        "Talents": "Talents & Effects",
+        "NpcInfo": "NPC Info"
       },
       "base": {
         "FIELDS": {
-          "biography": {"label": "Biography"},
-          "health": {
-            "value": {"label": "Health"},
-            "max": {"label": "Maximum Health"}
-          },
-          "power": {
-            "value": {"label": "Power"},
-            "max": {"label": "Maximum Power"}
+          "name.label": "Name:",
+          "biography": {
+            "label": "Biography"
           }
-        }
-      },
-      "Character": {
-        "FIELDS": {
-          "attributes.level.value": {"label": "Level"}
-        }
-      },
-      "NPC": {
-        "FIELDS": {
-          "cr": {"label": "CR"}
         },
-        "xp": {"label": "XP"}
+        "errors": {
+          "notEnoughMP": "You don't have enough MP to cast this spell.",
+          "noMinorMagicSkill": "You don't have the Minor Magic Special Skill to cast this spell.",
+          "noWizardrySkill": "You don't have the Wizardry Magic Special Skill to cast this spell.",
+          "noSorcerySkill": "You don't have the Sorcery Magic Special Skill to cast this spell.",
+          "noPriestSkill": "You don't have the Priest Magic Special Skill to cast this spell."
+        },
+        "actions": {
+          "calculateMP": "Calculate Magic Points"
+        },
+        "QuantityToTransfer": "Quantity to Transfer",
+        "TransferTo": "Transfer to {actor}"
+      },
+      "character": {
+        "FIELDS": {
+          "description.label": "Description:",
+          "experience.label": "Experience",
+          "race.label": "Race:",
+          "socialClass.label": "Social Class:",
+          "age.label": "Age:",
+          "sex.label": "Sex:",
+          "attributes.level.value": {
+            "label": "Level"
+          },
+          "slots.label": "Slots",
+          "provisions": {
+            "label": "Provisions",
+            "consume": "Consume"
+          },
+          "rest": "Rest"
+        },
+        "WARN": {
+          "NoProvisions": "You have no provisions to eat.",
+          "ProvisionsAte": "You already ate the max number of provisions for the day."
+        }
+      },
+      "npc": {
+        "FIELDS": {
+          "attacks.label": "Attacks",
+          "habitat.label": "Habitat",
+          "number": {
+            "label": "Number",
+            "labelExpanded": "Number Encountered"
+          },
+          "type.label": "Type",
+          "reaction.label": "Reaction",
+          "intelligence.label": "Intelligence",
+          "special.label": "Special"
+        },
+        "WARN": {
+          "itemTYpeNotAllowed": "You can only add weapons and armours to NPCs."
+        }
       }
     },
     "Item": {
@@ -51,22 +167,132 @@
         "Description": "Description",
         "Effects": "Effects"
       },
-      "Gear": {
+      "base": {
         "FIELDS": {
-          "rollFormula": {"label": "Roll Formula"},
-          "numDice": {"label": "Number of Dice"},
-          "dieSize": {"label": "Die Size"},
-          "rollMod": {"label": "Roll Modifier"},
-          "quantity": {"label": "Quantity"},
-          "weight": {"label": "Weight"}
+          "price": {
+            "gp": "gp",
+            "sp": "sp",
+            "city.label": "City Price",
+            "town.label": "Town Price",
+            "village.label": "Village Price"
+          }
+        },
+        "SendToChat": "Send to Chat"
+      },
+      "Equipment": {
+        "FIELDS": {
+          "quantity": {
+            "label": "Quantity"
+          },
+          "quantityPerSlot.label": "Quantity per Slot",
+          "equipped.label": "Equipped"
+        }
+      },
+      "Weapon": {
+        "FIELDS": {
+          "damage": {
+            "label": "Damage"
+          },
+          "ammunition": {
+            "label": "Ammunition"
+          },
+          "specialSkill": {
+            "label": "Special Skill"
+          },
+          "magical.label": "Magical",
+          "attackRollBonus.label": "Attack Roll Bonus",
+          "damageRollBonus.label": "Damage Roll Bonus"
+        },
+        "WARN": {
+          "NoAmmunition": "You don't have ammunition for this weapon."
+        },
+        "Attack": {
+          "label": "Attack",
+          "rollFormula.label": "Roll Formula",
+          "numDice.label": "Number of Dice",
+          "dieSize.label": "Die Size",
+          "rollMod.label": "Roll Modifier",
+          "attackWithoutSkill.label": "{weapon} (with SKILL)",
+          "attackWithSpecialSkill.label": "{weapon} (with {skill})",
+          "attackMessage": "{attacker} ({attackRoll} attacked {defender} ({defenseRoll}). {winner} wins the attack.",
+          "attackResult.alias": "Combat Result"
+        },
+        "Damage.label": "Damage",
+        "AttackAndDamage.label": "Attack & Damage"
+      },
+      "Armour": {
+        "FIELDS": {
+          "protection.label": "Protection",
+          "minRequired.label": "SKILL + Armour required",
+          "magical.label": "Magical",
+          "protectionRollBonus.label": "Protection Roll Bonus"
+        },
+        "ERRORS": {
+          "armourUnproficient": "Armour Unproficient"
         }
       },
       "Spell": {
         "FIELDS": {
-          "level": {"label": "Spell Level"}
+          "level": {
+            "label": "Spell Level"
+          }
         },
         "SpellLVL": "Level {level} Spells",
         "AddLVL": "Add LVL {level}"
+      },
+      "SpecialSkill": {
+        "FIELDS": {
+          "category": {
+            "label": "Category",
+            "combat.label": "Combat",
+            "movement.label": "Movement",
+            "stealth.label": "Stealth",
+            "magical.label": "Magical",
+            "knowledge.label": "Knowledge"
+          },
+          "rollCharacteristic": {
+            "label": "Roll Characteristic",
+            "skill.label": "Skill",
+            "magic.label": "Magic",
+            "higher.label": "Higher"
+          },
+          "value.label": "Value"
+        },
+        "WARN": {
+          "valueTooHigh": {
+            "title": "Value Too High",
+            "content": "The value of this special skill is too high. By the rules, it must be less than or equal to half of the maximum of the characteristic used for the roll. Do you want to keep your current value ({current})? If you select no, the value will be set to the maximum allowed value ({maxValue})."
+          }
+        }
+      },
+      "WizardrySpell": {
+        "FIELDS": {
+          "value.label": "Spell Level"
+        }
+      },
+      "SorcerySpell": {
+        "FIELDS": {
+          "value.label": "Spell Level",
+          "component.label": "Component",
+          "consumesComponent.label": "Consumes Component",
+          "consumesComponent.info": "[consumed]"
+        },
+        "ERRORS": {
+          "componentNotEnough": "You don't have enough components to cast this spell.",
+          "componentNotFound": "You don't have the required component to cast this spell."
+        }
+      },
+      "PriestAbility": {
+        "FIELDS": {
+          "isAvailable": {
+            "label": "Is Available",
+            "1.label": "Available",
+            "0.label": "Daily Used",
+            "-1.label": "Luck Used"
+          }
+        },
+        "used": "<p>This ability is already used today. To use again, you will lose 1 LUCK. Do you want to continue?</p>",
+        "notAvailable": "This ability is already used today, including the luck usage."
       }
     },
     "Effect": {
@@ -75,17 +301,34 @@
       "Temporary": "Temporary Effects",
       "Passive": "Passive Effects",
       "Inactive": "Inactive Effects"
-    }
+    },
+    "Cantrips": "Cantrips",
+    "Spell": "Spells",
+    "Talents": "Talents",
+    "Effects": "Effects",
+    "Equipments": "Equipment",
+    "Treasures": "Treasures",
+    "Biography": "Biography & Notes"
   },
   "TYPES": {
     "Actor": {
-      "character": "Character",
-      "npc": "NPC"
+      "character": "Hero",
+      "npc": "NPC",
+      "antiHero": "Anti-Hero"
     },
     "Item": {
       "gear": "Gear",
       "feature": "Feature",
-      "spell": "Spell"
+      "equipment": "Equipment",
+      "spell": "Spell",
+      "weapon": "Weapon",
+      "armour": "Armour",
+      "specialSkill": "Special Skill",
+      "minorSpell": "Spell: Minor",
+      "wizardrySpell": "Spell: Wizardry",
+      "sorcerySpell": "Spell: Sorcery",
+      "priestAbility": "Priest Ability",
+      "talent": "Talent"
     }
   }
 }

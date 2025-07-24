@@ -1,0 +1,48 @@
+<section class='tab combatSkills scrollable {{tab.cssClass}}' data-group='primary' data-tab='combatSkills'>
+  {{#if weapons}}
+  <div class="list">
+    <div class="weapon-title">
+      <label>{{localize "TYPES.Item.weapon"}}</label>
+      <label>1</label>
+      <label>2</label>
+      <label>3</label>
+      <label>4</label>
+      <label>5</label>
+      <label>6</label>
+      <label>7</label>
+    </div>
+    {{#each weapons as | weapon |}}
+    {{>"systems/aff2e/templates/actor/weapon-detail.hbs" item=weapon values=weapon.system.damage roll=true}}
+    {{/each}}
+  </div>
+  <div class="horizontal-rule"></div>
+  {{/if}}
+  {{#if armours}}
+  <div class="list">
+    <div class="weapon-title">
+      <label class="rollable draggable" data-action="roll" data-roll-type="armour" data-drag="special" data-macro-name="{{localize "TYPES.Item.armour"}}">{{localize "TYPES.Item.armour"}}</label>
+      <label>1</label>
+      <label>2</label>
+      <label>3</label>
+      <label>4</label>
+      <label>5</label>
+      <label>6</label>
+      <label>7</label>
+    </div>
+    {{#each armours as | armour |}}
+    {{>"systems/aff2e/templates/actor/weapon-detail.hbs" item=armour values=armour.system.protection roll=false}}
+    {{/each}}
+  </div>
+  <div class="horizontal-rule"></div>
+  {{/if}}
+  {{#if skills}}
+  <div class="item-title">
+    <label>{{localize "TYPES.Item.specialSkill"}}</label>
+  </div>
+  <div class="list grid">
+    {{#each skills as | item |}}
+    {{> "systems/aff2e/templates/actor/item-with-value.hbs" item=item}}
+    {{/each}}
+  </div>
+  {{/if}}
+</section>

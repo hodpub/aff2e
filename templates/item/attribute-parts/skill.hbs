@@ -1,0 +1,5 @@
+<section class='tab attributes {{tab.cssClass}}' data-group='primary' data-tab='attributes'>
+  {{formGroup systemFields.category value=system.category choices=config.Skills.categoryChoices localize=true }}
+  {{formGroup systemFields.rollCharacteristic value=system.rollCharacteristic choices=config.Skills.rollCharacteristicChoices localize=true }}
+  {{formGroup systemFields.value value=system.value hidden=(not embedded)}}
+</section>

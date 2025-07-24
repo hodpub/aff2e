@@ -1,0 +1,42 @@
+<section class='tab npcInfo scrollable {{tab.cssClass}}' data-group='primary' data-tab='npcInfo'>
+  <div class="grid grid-gap-5 grid-2col">
+    <div class="flag single">
+      <label>{{localize "AFF.Actor.npc.FIELDS.attacks.label"}}</label>
+      <input class="simple" name='system.attacks' type='number' value='{{system.attacks}}' />
+    </div>
+    <div class="flag single">
+      <label>{{localize "AFF.Actor.npc.FIELDS.habitat.label"}}</label>
+      <input class="simple" name='system.habitat' type='text' value='{{system.habitat}}' />
+    </div>
+    <div class="flag single">
+      <label class="rollable" data-action="roll" data-roll-type="number">{{localize "AFF.Actor.npc.FIELDS.number.label"}}</label>
+      <input class="simple" name='system.number' type='text' value='{{system.number}}' />
+    </div>
+    <div class="flag single">
+      <label>{{localize "AFF.Actor.npc.FIELDS.type.label"}}</label>
+      <input class="simple" name='system.type' type='text' value='{{system.type}}' />
+    </div>
+    <div class="flag single">
+      <label>{{localize "AFF.Actor.npc.FIELDS.reaction.label"}}</label>
+      <input class="simple" name='system.reaction' type='text' value='{{system.reaction}}' />
+    </div>
+    <div class="flag single">
+      <label>{{localize "AFF.Actor.npc.FIELDS.intelligence.label"}}</label>
+      <input class="simple" name='system.intelligence' type='text' value='{{system.intelligence}}' />
+    </div>
+  </div>
+  <div class="horizontal-rule"></div>
+  <div class="textarea">
+    <div class="item-title">
+      <label>{{localize "AFF.Actor.npc.FIELDS.special.label"}}</label>
+    </div>
+    {{! Editors must receive enriched text data from getData to properly handle rolls, UUID links, etc. }}
+    {{#if editable}}
+    <prose-mirror name="system.special" data-document-uuid="{{actor.uuid}}" value="{{system.special}}"
+      collaborate="true" toggled="true">
+      {{{enrichedSpecial}}}
+    </prose-mirror>
+    {{else}} {{{enrichedSpecial}}}
+    {{/if}}
+  </div>
+</section>

@@ -1,0 +1,26 @@
+<div>
+  <div class="title">
+    {{rollName}}
+  </div>
+  <div class="target">
+    <a data-action="setRollType">
+      <i class="fa-arrow-circle-down {{underClass}}" aria-hidden="true" data-action="setRollType"></i>
+    </a>
+    <label class="target">{{target}}</label>
+    <a data-action="setRollType">
+      <i class="fa-arrow-circle-up {{higherClass}}" aria-hidden="true" data-action="setRollType"></i>
+    </a>
+  </div>
+  <div class="grid breakdown" style="margin: 10px 0;">
+    {{#each breakdown as | value item |}}
+    <div class="form-group">
+      <label class="banner">{{value}}</label>
+      <label data-tooltip="{{item}}">{{item}}</label>
+    </div>
+    {{/each}}
+    <div class="form-group">
+      <input class="small" type="number" name="bonus" value="{{bonus}}" data-action="setBonus" />
+      <label class="bonus">{{localize "AFF.Roll.bonus"}}</label>
+    </div>
+  </div>
+</div>
