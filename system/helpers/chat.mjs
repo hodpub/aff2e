@@ -6,7 +6,7 @@ export async function sendToChat({ actor, item }) {
 async function _sendItemDescription(item) {
   const content = item.system.description ?? "";
   const flavor = item.name;
-  return _sendToChat(item.owner, flavor, content);
+  return _sendToChat(item.actor, flavor, content);
 }
 
 async function _sendToChat(actor, flavor, content) {
