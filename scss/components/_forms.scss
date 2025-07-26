@@ -32,12 +32,8 @@
   height: 100%;
 }
 
-.tab.biography {
-  flex: 1;
-
-  .editor {
-    height: 100%;
-  }
+.tab.biography .editor {
+  height: calc(100% - 15px);
 }
 
 .tox {

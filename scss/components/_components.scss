@@ -68,6 +68,6 @@ div.textarea {
   padding: 20px;
 
   &.fill {
-    height: 95%;
+    height: calc(99% - 3px);
   }
 }

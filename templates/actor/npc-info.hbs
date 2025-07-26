@@ -1,4 +1,4 @@
-<section class='tab npcInfo scrollable {{tab.cssClass}}' data-group='primary' data-tab='npcInfo'>
+<section class='tab npcInfo {{tab.cssClass}}' data-group='primary' data-tab='npcInfo'>
   <div class="grid grid-gap-5 grid-2col">
     <div class="flag single">
       <label>{{localize "AFF.Actor.npc.FIELDS.attacks.label"}}</label>
@@ -31,12 +31,9 @@
       <label>{{localize "AFF.Actor.npc.FIELDS.special.label"}}</label>
     </div>
     {{! Editors must receive enriched text data from getData to properly handle rolls, UUID links, etc. }}
-    {{#if editable}}
     <prose-mirror name="system.special" data-document-uuid="{{actor.uuid}}" value="{{system.special}}"
-      collaborate="true" toggled="true">
+      collaborate="true" toggled="true" {{#unless editable}}disabled{{/unless}}>
       {{{enrichedSpecial}}}
     </prose-mirror>
-    {{else}} {{{enrichedSpecial}}}
-    {{/if}}
   </div>
 </section>
