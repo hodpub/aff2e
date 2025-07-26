@@ -89,7 +89,9 @@
           "noPriestSkill": "You don't have the Priest Magic Special Skill to cast this spell."
         },
         "actions": {
-          "calculateMP": "Calculate Magic Points"
+          "calculateMP": "Calculate Magic Points",
+          "equip": "Equip",
+          "unequip": "Unequip"
         },
         "magic": {
           "minorSpell": "Minor Spells",

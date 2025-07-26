@@ -809,6 +809,38 @@ export class AffActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorSh
         },
       },
       {
+        name: "AFF.Actor.base.actions.equip",
+        icon: "<i class=\"fa-solid fa-hand-fist\"></i>",
+        condition: (target) => {
+          const item = this._getEmbeddedDocument(target);
+          return item && "equipped" in item.system && !item.system.equipped;
+        },
+        callback: async (target) => {
+          const item = this._getEmbeddedDocument(target);
+          if (!item) {
+            console.error("Could not find item");
+            return;
+          }
+          await item.update({ "system.equipped": true });
+        },
+      },
+      {
+        name: "AFF.Actor.base.actions.unequip",
+        icon: "<i class=\"fa-solid fa-hand\"></i>",
+        condition: (target) => {
+          const item = this._getEmbeddedDocument(target);
+          return item && "equipped" in item.system && item.system.equipped;
+        },
+        callback: async (target) => {
+          const item = this._getEmbeddedDocument(target);
+          if (!item) {
+            console.error("Could not find item");
+            return;
+          }
+          await item.update({ "system.equipped": false });
+        },
+      },
+      {
         name: "Edit",
         icon: "<i class=\"fa-solid fa-fw fa-edit\"></i>",
         // condition: () => this.isEditMode,
