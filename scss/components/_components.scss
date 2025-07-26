@@ -5,7 +5,6 @@
   border-image-outset: 0px 0px 0px 0px;
   border-image-repeat: round stretch;
   border-image-source: url(../assets/components/field-156.webp);
-  border: 0;
 
   &.square {
     border-image-source: url(../assets/components/field-23.webp);
@@ -34,6 +33,7 @@
 
   &.simple {
     border-image: unset;
+    border: 0;
     padding: 0;
     height: calc(var(--input-height) - 12px);
   }
