@@ -35,6 +35,10 @@ export default class AffSorcerySpell extends AffItemBase {
     this.componentInfo = `<p>${game.i18n.localize("AFF.Item.SorcerySpell.FIELDS.component.label")}: ${component.name} <em>${consumesComponent}</em></p>`;
   }
 
+  async extraDescription() {
+    return this.componentInfo;
+  }
+
   async roll(event) {
     const currentSkill = this.actor.system.getSkill(AFF.Settings.sorcerySkill.key);
     if (!currentSkill) {

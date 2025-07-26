@@ -50,6 +50,10 @@
     background-position: center;
     min-height: 10px;
     margin: 10px 0;
+
+    &:nth-child(odd) {
+      transform: rotate(180deg);
+    }
   }
 
   %vertical-rule {
@@ -226,7 +230,7 @@
     }
   }
 
-  &.actor.npc{
+  &.actor.npc {
     menu.controls-dropdown li[data-action="calculateMP"] {
       display: none;
     }

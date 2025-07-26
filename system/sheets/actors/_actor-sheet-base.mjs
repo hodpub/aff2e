@@ -269,14 +269,15 @@ export class AffActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorSh
     const skills = [];
     const weapons = [];
     const armours = [];
-    const spells = [];
     const cantrips = [];
     const talents = [];
     const equipments = [];
+    const spells = Object.assign(...Object.keys(AFF.Magic.spellTypes).map(type => ({ [type]: [] })));
 
     // Iterate through items, allocating to containers
     for (let i of this.document.items) {
-      i.tooltip = `<p>${i.name}</p>${await this._createEnrichedText(i.system.description)}`;
+      const extraDescription = await i.system.extraDescription?.() || "";
+      i.tooltip = `<p>${i.name}</p>${extraDescription}${await this._createEnrichedText(i.system.description)}`;
       if (i.type == "specialSkill") {
         skills.push(i);
         continue;
@@ -297,25 +298,27 @@ export class AffActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorSh
         talents.push(i);
         continue;
       }
-      if (i.type == "minorSpell") {
-        cantrips.push(i);
-        continue;
-      }
       if (i.type == "equipment") {
         equipments.push(i);
         continue;
       }
-      if (i.type == "sorcerySpell") {
-        i.tooltip = `${i.system.componentInfo}${await this._createEnrichedText(i.system.description)}`;
-        spells.push(i);
-        continue;
-      }
-      if (["wizardrySpell", "priestAbility", 'aff2e-combat-companion.combatMagicSpell'].indexOf(i.type) > -1) {
-        spells.push(i);
+      if (Object.keys(AFF.Magic.spellTypes).indexOf(i.type) > -1) {
+        i.template = AFF.Magic.spellTypes[i.type];
+        spells[i.type].push(i);
         continue;
       }
 
       equipments.push(i);
+    }
+
+    for (const s in spells) {
+      if (spells[s].length === 0) {
+        delete spells[s];
+      }
+    }
+
+    for (const s of Object.values(spells)) {
+      s.sort((a, b) => (a.sort || 0) - (b.sort || 0));
     }
 
     // Sort then assign
@@ -324,7 +327,7 @@ export class AffActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorSh
     context.armours = armours.sort((a, b) => (a.sort || 0) - (b.sort || 0));
     context.gear = gear.sort((a, b) => (a.sort || 0) - (b.sort || 0));
     context.features = features.sort((a, b) => (a.sort || 0) - (b.sort || 0));
-    context.spells = spells.sort((a, b) => (a.sort || 0) - (b.sort || 0));
+    context.spells = spells;
     context.cantrips = cantrips.sort((a, b) => (a.sort || 0) - (b.sort || 0));
     context.talents = talents.sort((a, b) => (a.sort || 0) - (b.sort || 0));
     context.equipments = equipments.sort((a, b) => (a.sort || 0) - (b.sort || 0));

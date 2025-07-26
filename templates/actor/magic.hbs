@@ -1,23 +1,19 @@
 <section class='tab magic scrollable {{tab.cssClass}}' data-group='primary' data-tab='magic'>
-  {{#if cantrips}}
+  {{#each spells as | spellList spellType |}}
+  {{#if spellList}}
   <div class="item-title">
-    <label>{{localize "AFF.Cantrips"}}</label>
+    <label>{{localize (concat "AFF.Actor.base.magic." spellType)}}</label>
   </div>
   <div class="list grid">
-    {{#each cantrips as | item |}}
-    {{> "systems/aff2e/templates/actor/item.hbs" item=item}}
+    {{#each spellList as | item |}}
+    {{log (lookup item "template")}}
+    {{> (lookup item "template") item=item}}
     {{/each}}
   </div>
+  {{log @last}}
+  {{#unless @last}}
   <div class="horizontal-rule"></div>
+  {{/unless}}
   {{/if}}
-  {{#if spells}}
-  <div class="item-title">
-    <label>{{localize "AFF.Spell"}}</label>
-  </div>
-  <div class="list grid">
-    {{#each spells as | item |}}
-    {{> "systems/aff2e/templates/actor/item-with-value.hbs" item=item}}
-    {{/each}}
-  </div>
-  {{/if}}
+  {{/each}}
 </section>

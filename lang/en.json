@@ -9,32 +9,6 @@
       "initial": "Initial:",
       "current": "Current:"
     },
-    "Ability": {
-      "Str": {
-        "long": "Strength",
-        "abbr": "str"
-      },
-      "Con": {
-        "long": "Constitution",
-        "abbr": "con"
-      },
-      "Dex": {
-        "long": "Dexterity",
-        "abbr": "dex"
-      },
-      "Int": {
-        "long": "Intelligence",
-        "abbr": "int"
-      },
-      "Wis": {
-        "long": "Wisdom",
-        "abbr": "wis"
-      },
-      "Cha": {
-        "long": "Charisma",
-        "abbr": "cha"
-      }
-    },
     "Settings": {
       "minorMagicSkill": {
         "label": "Minor Magic Special Skill",
@@ -116,6 +90,12 @@
         },
         "actions": {
           "calculateMP": "Calculate Magic Points"
+        },
+        "magic": {
+          "minorSpell": "Minor Spells",
+          "wizardrySpell": "Wizardry Spells",
+          "sorcerySpell": "Sorcery Spells",
+          "priestAbility": "Priest Abilities"
         },
         "QuantityToTransfer": "Quantity to Transfer",
         "TransferTo": "Transfer to {actor}"
