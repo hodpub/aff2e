@@ -40,6 +40,10 @@
     }
   }
 
+  .table-results li:has(div) img {
+    display: none;
+  }
+
   p {
     text-align: justify;
     hyphens: auto;
