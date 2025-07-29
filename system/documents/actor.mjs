@@ -42,6 +42,10 @@ export class AffActor extends Actor {
     return { ...super.getRollData(), ...(this.system.getRollData?.() ?? null) };
   }
 
+  _replaceTokenImgIfDefault(img) {
+    return this.prototypeToken.texture.src == "icons/svg/mystery-man.svg" ? img : this.prototypeToken.texture.src;
+  }
+
   _replaceImgIfDefault(img) {
     return this.img == "icons/svg/mystery-man.svg" ? img : this.img;
   }
@@ -53,6 +57,7 @@ export class AffActor extends Actor {
     switch (data.type) {
       case "character":
         const characterImg = this._replaceImgIfDefault("systems/aff2e/assets/icons/hero.svg");
+        const characterTokenImg = this._replaceTokenImgIfDefault("systems/aff2e/assets/icons/hero.svg");
         this.updateSource({
           img: characterImg,
           prototypeToken: {
@@ -62,13 +67,14 @@ export class AffActor extends Actor {
               enabled: true
             },
             texture: {
-              src: characterImg,
+              src: characterTokenImg,
             }
           }
         });
         break;
       case "npc":
         const npcImg = this._replaceImgIfDefault("systems/aff2e/assets/icons/npc.svg");
+        const npcTokenImg = this._replaceTokenImgIfDefault("systems/aff2e/assets/icons/npc.svg");
         this.updateSource({
           img: npcImg,
           prototypeToken: {
@@ -78,13 +84,14 @@ export class AffActor extends Actor {
               enabled: true
             },
             texture: {
-              src: npcImg,
+              src: npcTokenImg,
             }
           }
         });
         break;
       case "antiHero":
         const antiHeroImg = this._replaceImgIfDefault("systems/aff2e/assets/icons/antiHero.svg");
+        const antiHeroTokenImg = this._replaceTokenImgIfDefault("systems/aff2e/assets/icons/antiHero.svg");
         this.updateSource({
           img: antiHeroImg,
           prototypeToken: {
@@ -94,7 +101,7 @@ export class AffActor extends Actor {
               enabled: true
             },
             texture: {
-              src: antiHeroImg,
+              src: antiHeroTokenImg,
             }
           }
         });
