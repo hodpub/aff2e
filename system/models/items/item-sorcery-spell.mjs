@@ -46,7 +46,7 @@ export default class AffSorcerySpell extends AffItemBase {
       return;
     }
 
-    if (this.component) {
+    if (this.component && this.actor.type == "character") {
       const componentId = foundry.utils.parseUuid(this.component).id;
       const component = this.actor.items.get(componentId);
       if (!component) {
