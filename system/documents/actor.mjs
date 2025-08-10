@@ -78,7 +78,7 @@ export class AffActor extends Actor {
         this.updateSource({
           img: npcImg,
           prototypeToken: {
-            actorLink: false,
+            actorLink: data.prototypeToken?.actorLink ?? false,
             disposition: -1,
             sight: {
               enabled: true
