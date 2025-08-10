@@ -37,7 +37,8 @@ export default class AffWizardrySpell extends AffItemBase {
   }
 
   async roll(event) {
-    if (this.actor.system.characteristics.magicPoints.value < this.value) {
+    const cost = Math.abs(this.calculateCost({ rollResult: AffRoll.ROLL_RESULT.SUCCESS }));
+    if (this.actor.system.characteristics.magicPoints.value < cost) {
       ui.notifications.error("AFF.Actor.base.errors.notEnoughMP", { localize: true });
       return;
     }
