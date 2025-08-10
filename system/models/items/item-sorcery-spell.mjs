@@ -46,9 +46,10 @@ export default class AffSorcerySpell extends AffItemBase {
       return;
     }
 
+    let component = null;
     if (this.component && this.actor.type == "character") {
       const componentId = foundry.utils.parseUuid(this.component).id;
-      const component = this.actor.items.get(componentId);
+      component = this.actor.items.get(componentId);
       if (!component) {
         ui.notifications.error("AFF.Item.SorcerySpell.ERRORS.componentNotFound", { localize: true });
         return;
@@ -56,11 +57,6 @@ export default class AffSorcerySpell extends AffItemBase {
       if (this.consumesComponent && (!component || component?.system.quantity <= 0)) {
         ui.notifications.error("AFF.Item.SorcerySpell.ERRORS.componentNotEnough", { localize: true });
         return;
-      }
-
-      if (this.consumesComponent) {
-        const newQuantity = Math.max(0, component.system.quantity - 1);
-        await component.update({ "system.quantity": newQuantity });
       }
     }
 
@@ -79,7 +75,12 @@ export default class AffSorcerySpell extends AffItemBase {
         [currentSkill.name]: currentSkill.system.value,
       },
     });
-    return rollDialog.wait(event);
+    const result = await rollDialog.wait(event);
+    if (result && component && this.consumesComponent) {
+      const newQuantity = Math.max(0, component.system.quantity - 1);
+      await component.update({ "system.quantity": newQuantity });
+    }
+    return result;
   }
 
   async handleRollUnder(roll, target) {
