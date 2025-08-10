@@ -66,10 +66,7 @@ export default class AffWizardrySpell extends AffItemBase {
   }
 
   async handleRollUnder(roll, target) {
-    let mp = roll.rollResult >= AffRoll.ROLL_RESULT.SUCCESS ? -this.value : roll.rollResult - 1;
-
-    const newValue = Math.max(0, this.actor.system.characteristics.magicPoints.value + mp);
-    await this.actor.update({ "system.characteristics.magicPoints.value": newValue });
+    await this.consumeCost(roll);
 
     if (roll.rollResult == AffRoll.ROLL_RESULT.CRITICAL)
       return aff2e.utils.tableHelper.drawSpellCritical(this);
@@ -77,5 +74,18 @@ export default class AffWizardrySpell extends AffItemBase {
       return aff2e.utils.tableHelper.drawOops(this);
 
     return;
+  }
+
+  async consumeCost(roll) {
+    const mp = this.calculateCost(roll);
+    if (mp === 0) return;
+
+    const newValue = Math.max(0, this.actor.system.characteristics.magicPoints.value + mp);
+    await this.actor.update({ "system.characteristics.magicPoints.value": newValue });
+  }
+
+  calculateCost(roll) {
+    let mp = roll.rollResult >= AffRoll.ROLL_RESULT.SUCCESS ? -this.value : roll.rollResult - 1;
+    return mp;
   }
 }
