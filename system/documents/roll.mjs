@@ -178,6 +178,10 @@ export default class AffRoll extends foundry.dice.Roll {
       return AffRoll.ROLL_RESULT.FUMBLE;
     if (this._isCritical())
       return AffRoll.ROLL_RESULT.CRITICAL;
+    if (this.dice[0].total == 2)
+      return AffRoll.ROLL_RESULT.SUCCESS;
+    if (this.dice[0].total == 12)
+      return AffRoll.ROLL_RESULT.FAIL;
 
     return this.total <= this.target ? AffRoll.ROLL_RESULT.SUCCESS : AffRoll.ROLL_RESULT.FAIL;
   }
