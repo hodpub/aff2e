@@ -361,6 +361,9 @@ export class AffActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorSh
     if (this.document.type === 'antiHero')
       options.position.height = 675;
 
+    const size = game.settings.get(AFF.ID, AFF.Settings.sheetSize.key, 100) / 100;
+    options.position.scale = size;
+
     this.classList.add(this.document.type);
 
     await super._onFirstRender(context, options);

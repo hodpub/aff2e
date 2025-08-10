@@ -49,6 +49,10 @@
       "criticalTable": {
         "label": "Critical Table",
         "hint": "Sets the Critical Rollable Table. On a critical, the system will roll on this table to determine the critical result."
+      },
+      "sheetSize": {
+        "label": "Sheet Size",
+        "hint": "Sets the sheet size. 100% is the original, you can go down until 50% (half of the size). Keep in mind that reducing the size will also reduce the font size, and will see some \"lines\" in the sheet. Besides that, if you double click the header, it will minimize the sheet, but double clicking it again will not restore the size. This is a Foundry bug, and is being investigated. You can always restore the size by refreshing the page or changing the setting again."
       }
     },
     "Roll": {

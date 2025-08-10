@@ -1,6 +1,21 @@
 const fields = foundry.data.fields;
 
 export const Settings = {
+  sheetSize: {
+    config: true,
+    scope: "client",
+    key: "sheetSize",
+    type: Number,
+    default: 100,
+    range: {
+      min: 50,
+      max: 100,
+      step: 5,
+    },
+    requiresReload: true,
+    name: "AFF.Settings.sheetSize.label",
+    hint: "AFF.Settings.sheetSize.hint"
+  },
   minorMagicSkill: {
     config: true,
     scope: 'world',
