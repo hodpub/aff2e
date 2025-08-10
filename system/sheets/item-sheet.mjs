@@ -212,35 +212,43 @@ export class AffItemSheet extends api.HandlebarsApplicationMixin(
         // Run through localization
         label: 'AFF.Item.Tabs.',
       };
-      switch (partId) {
-        case 'header':
-        case 'tabs':
-          return tabs;
-        case 'description':
-          tab.id = 'description';
-          tab.label += 'Description';
-          break;
-        case 'attributesEquipment':
-        case 'attributesWeapon':
-        case 'attributesArmour':
-        case 'attributesSpell':
-        case 'attributesSkill':
-        case 'attributesWizardry':
-        case 'attributesSorcery':
-        case 'attributesPriestAbility':
-        case 'attributesTalent':
-          tab.id = 'attributes';
-          tab.label += 'Attributes';
-          break;
-        case 'effects':
-          tab.id = 'effects';
-          tab.label += 'Effects';
-          break;
-      }
+      if (this.constructor.SKIPPED_TABS.includes(partId))
+        return tabs;
+
+      this._prepareTabContext(partId, tabs, tab);
       if (this.tabGroups[tabGroup] === tab.id) tab.cssClass = 'active';
       tabs[partId] = tab;
       return tabs;
     }, {});
+  }
+
+  static SKIPPED_TABS = [
+    "header", "tabs",
+  ]
+
+  _prepareTabContext(partId, tabs, tab) {
+    switch (partId) {
+      case 'description':
+        tab.id = 'description';
+        tab.label += 'Description';
+        break;
+      case 'attributesEquipment':
+      case 'attributesWeapon':
+      case 'attributesArmour':
+      case 'attributesSpell':
+      case 'attributesSkill':
+      case 'attributesWizardry':
+      case 'attributesSorcery':
+      case 'attributesPriestAbility':
+      case 'attributesTalent':
+        tab.id = 'attributes';
+        tab.label += 'Attributes';
+        break;
+      case 'effects':
+        tab.id = 'effects';
+        tab.label += 'Effects';
+        break;
+    }
   }
 
   /**
