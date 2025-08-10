@@ -45,10 +45,10 @@ export default class AffMinorSpell extends AffItemBase {
   }
 
   async handleRollUnder(roll, target) {
-    if (roll.rollResult >= AffRoll.ROLL_RESULT.SUCCESS)
-      return;
+    let mp = 0;
 
-    const mp = roll.rollResult - 1;
+    if (roll.rollResult < AffRoll.ROLL_RESULT.SUCCESS)
+      mp = roll.rollResult - 1;
     const newValue = Math.max(0, this.actor.system.characteristics.magicPoints.value + mp);
     await this.actor.update({ "system.characteristics.magicPoints.value": newValue });
 
@@ -56,7 +56,5 @@ export default class AffMinorSpell extends AffItemBase {
       return aff2e.utils.tableHelper.drawSpellCritical(this);
     if (roll.rollResult == AffRoll.ROLL_RESULT.FUMBLE)
       return aff2e.utils.tableHelper.drawOops(this);
-
-    return;
   }
 }
