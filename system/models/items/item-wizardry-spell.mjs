@@ -71,13 +71,11 @@ export default class AffWizardrySpell extends AffItemBase {
     const newValue = Math.max(0, this.actor.system.characteristics.magicPoints.value + mp);
     await this.actor.update({ "system.characteristics.magicPoints.value": newValue });
 
-    if (roll.rollResult != AffRoll.ROLL_RESULT.FUMBLE)
-      return;
+    if (roll.rollResult == AffRoll.ROLL_RESULT.CRITICAL)
+      return aff2e.utils.tableHelper.drawSpellCritical(this);
+    if (roll.rollResult == AffRoll.ROLL_RESULT.FUMBLE)
+      return aff2e.utils.tableHelper.drawOops(this);
 
-    const oopsTableId = game.settings.get(AFF.ID, AFF.Settings.oopsTable.key);
-    if (!oopsTableId)
-      return;
-    const oopsTable = await fromUuid(oopsTableId);
-    await oopsTable.draw();
+    return;
   }
 }

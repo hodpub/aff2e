@@ -2,35 +2,54 @@ import { AFF } from "../config/_aff.mjs";
 
 export default class AffTableHelper {
   constructor() {
-    this.fumbleExecutors = [];
-    this.criticalExecutors = [];
+    this.oopsInterceptors = [];
+    this.fumbleInterceptors = [];
+    this.criticalInterceptors = [];
+    this.spellCriticalInterceptors = [];
   }
-  addFumbleExecutor(executor) {
-    this.fumbleExecutors.push(executor);
+  addOopsInterceptor(interceptor) {
+    this.oopsInterceptors.push(interceptor);
   }
-  addCriticalExecutor(executor) {
-    this.criticalExecutors.push(executor);
+  addFumbleInterceptor(interceptor) {
+    this.fumbleInterceptors.push(interceptor);
+  }
+  addCriticalInterceptor(interceptor) {
+    this.criticalInterceptors.push(interceptor);
+  }
+  addSpellCriticalInterceptor(interceptor) {
+    this.spellCriticalInterceptors.push(interceptor);
   }
 
   async drawFumble(source) {
-    return this._drawFromTable(this.fumbleExecutors, AFF.Settings.fumbleTable.key, source);
+    return this._drawFromTable(this.fumbleInterceptors, AFF.Settings.fumbleTable.key, source);
   }
 
   async drawCritical(source) {
-    return this._drawFromTable(this.criticalExecutors, AFF.Settings.criticalTable.key, source);
+    return this._drawFromTable(this.criticalInterceptors, AFF.Settings.criticalTable.key, source);
   }
 
-  async _drawFromTable(executors, tablekey, source) {
-    let tableId = game.settings.get(AFF.ID, tablekey);
+  async drawOops(source) {
+    return this._drawFromTable(this.oopsInterceptors, AFF.Settings.oopsTable.key, source);
+  }
 
-    const sortedExecutors = executors.sort((a, b) => a.priority - b.priority);
-    for (const executor of sortedExecutors) {
-      const result = await executor.executor(source);
+  async drawSpellCritical(source){
+    return this._drawFromTable(this.spellCriticalInterceptors, undefined, source);
+  }
+
+  async _drawFromTable(interceptors, tablekey, source) {
+    let tableId;
+
+    const sortedInterceptors = interceptors.sort((a, b) => a.priority - b.priority);
+    for (const interceptor of sortedInterceptors) {
+      const result = await interceptor.interceptor(source);
       if (result != undefined) {
-        tableId = result; // If executor returns a tableId, use it instead of the one from settings.
-        break; // Stop at the first executor that returns a tableId.
+        tableId = result; // If interceptor returns a tableId, use it instead of the one from settings.
+        break; // Stop at the first interceptor that returns a tableId.
       }
     }
+
+    if (!tableId && tablekey)
+      tableId = game.settings.get(AFF.ID, tablekey);
 
     if (!tableId)
       return;
