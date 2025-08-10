@@ -6,11 +6,9 @@
   </div>
   <div class="list grid">
     {{#each spellList as | item |}}
-    {{log (lookup item "template")}}
     {{> (lookup item "template") item=item}}
     {{/each}}
   </div>
-  {{log @last}}
   {{#unless @last}}
   <div class="horizontal-rule"></div>
   {{/unless}}
