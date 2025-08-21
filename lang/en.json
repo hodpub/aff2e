@@ -277,6 +277,7 @@
             "-1.label": "Luck Used"
           }
         },
+        "available": "<p>Do you want to use this ability? It will consume your daily usage.</p>",
         "used": "<p>This ability is already used today. To use again, you will lose 1 LUCK. Do you want to continue?</p>",
         "notAvailable": "This ability is already used today, including the luck usage."
       }

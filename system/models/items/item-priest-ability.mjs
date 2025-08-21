@@ -38,13 +38,11 @@ export default class AffPriestAbility extends AffItemBase {
       ui.notifications.error("AFF.Item.PriestAbility.notAvailable", { localize: true });
       return;
     }
-    let continueCasting = true;
-    if (this.isAvailable == 0) {
-      continueCasting = await foundry.applications.api.DialogV2.confirm({
-        window: { title: this.parent.name },
-        content: game.i18n.localize("AFF.Item.PriestAbility.used")
-      });
-    }
+    const message = this.isAvailable == 1 ? "AFF.Item.PriestAbility.available" : "AFF.Item.PriestAbility.used";
+    let continueCasting = await foundry.applications.api.DialogV2.confirm({
+      window: { title: this.parent.name },
+      content: game.i18n.localize(message)
+    });
 
     if (!continueCasting)
       return;
