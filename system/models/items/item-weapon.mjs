@@ -249,7 +249,7 @@ export default class AffWeapon extends AffEquipment {
   }
 
   async reduceAmmunition() {
-    if (!this.ammunition)
+    if (!this.ammunition || this.actor.type == "npc")
       return true;
 
     const ammunitionId = foundry.utils.parseUuid(this.ammunition).id;
