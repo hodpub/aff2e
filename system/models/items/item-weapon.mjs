@@ -40,7 +40,7 @@ export default class AffWeapon extends AffEquipment {
 
   async roll(event) {
     if (event?.shiftKey) {
-      return this.attackAndDamage(event);
+      return this.rollAttack(event);
     }
 
     const title = this.parent.name;
