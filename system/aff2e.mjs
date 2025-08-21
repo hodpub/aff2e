@@ -118,14 +118,16 @@ Handlebars.registerHelper('toLowerCase', function (str) {
 Hooks.once('ready', async function () {
   // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
   await migrations.migrate();
+  const manualUrl = "https://github.com/hodpub/aff2e/wiki";
   const content = await foundry.applications.handlebars.renderTemplate("systems/aff2e/templates/dialog/copyright.hbs");
-  foundry.applications.api.DialogV2.prompt({
+  foundry.applications.api.DialogV2.confirm({
     classes: ['copyright-dialog'],
     position: { width: 900, },
     modal: true,
     window: { title: "Advanced Fighting Fantasy - 2nd Edition" },
     content,
-    ok: { label: "Play!", icon: "fa-solid fa-play" },
+    yes: { label: "Play!", icon: "fa-solid fa-play", default: true },
+    no: { label: "System Manual", icon: "fa-solid fa-book", callback: () => { window.open(manualUrl, '_blank').focus(); } }
   });
   Hooks.on('hotbarDrop', (bar, data, slot) => {
     if (data.type == "special") {
@@ -135,6 +137,15 @@ Hooks.once('ready', async function () {
       createDocMacro(data, slot); return false;
     }
   });
+
+  const settings = document.querySelector("section#settings section.documentation");
+  const manualButton = document.createElement("a");
+  manualButton.href = manualUrl;
+  manualButton.target = "_blank";
+  manualButton.innerHTML = `<i class="fa-solid fa-book" inert=""></i> AFF System Manual`;
+  manualButton.classList.add("button");
+  settings.appendChild(manualButton);
+  console.log("AFF | ", settings);
 });
 
 /* -------------------------------------------- */
