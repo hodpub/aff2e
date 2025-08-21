@@ -63,4 +63,6 @@ export class AffItem extends Item {
 
     return this.sendToChat(event);
   }
+
+  static DEFAULT_ICON = "systems/aff2e/assets/icons/item.svg";
 }
