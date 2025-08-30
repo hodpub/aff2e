@@ -1,0 +1,20 @@
+<section class='tab special-properties {{tab.cssClass}}' data-group='primary' data-tab='specialProperties'>
+  <a class="rollable"
+    data-tooltip='{{localize "DOCUMENT.Create" type=(localize "AFF.Item.Equipment.FIELDS.specialProperties.label")}}'
+    data-action='createSpecialProperty'>
+    <i class='fas fa-plus'></i> <label>{{localize "DOCUMENT.Create" type=(localize
+      "AFF.Item.Equipment.FIELDS.specialProperties.label")}}</label>
+  </a>
+
+  {{#each system.specialProperties}}
+  <div class="form-group">
+    <input type="checkbox" name="system.specialProperties.{{@index}}.active" {{#if this.active}}checked{{/if}} />
+    <input type="text" name="system.specialProperties.{{@index}}.item" value="{{this.item}}" />
+    <a class="rollable"
+      data-tooltip='{{localize "DOCUMENT.Delete" type=(localize "AFF.Item.Equipment.FIELDS.specialProperties.label")}}'
+      data-action='deleteSpecialProperty' data-index='{{@index}}'>
+      <i class='fas fa-trash'></i>
+    </a>
+  </div>
+  {{/each}}
+</section>

@@ -1,4 +1,3 @@
-
 import { DataHelper } from "../../helpers/data.mjs";
 import { toPriceInfo } from "../../helpers/trade.mjs";
 import AffItemBase from "./base-item.mjs";
@@ -20,6 +19,13 @@ export default class AffEquipment extends AffItemBase {
     });
     schema.quantity = new fields.NumberField({ ...DataHelper.requiredInteger, min: 0, initial: 1 });
     schema.quantityPerSlot = new fields.NumberField({ ...DataHelper.requiredInteger, min: 0, initial: 1 });
+
+    schema.specialProperties = new fields.ArrayField(
+      new fields.SchemaField({
+        item: new fields.StringField({}),
+        active: new fields.BooleanField({ initial: true })
+      })
+    );
 
     return schema;
   }

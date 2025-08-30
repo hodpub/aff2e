@@ -29,6 +29,8 @@ export class AffItemSheet extends api.HandlebarsApplicationMixin(
       createDoc: this._createEffect,
       deleteDoc: this._deleteEffect,
       toggleEffect: this._toggleEffect,
+      createSpecialProperty: this._createSpecialProperty,
+      deleteSpecialProperty: this._deleteSpecialProperty,
     },
     form: {
       submitOnChange: true,
@@ -81,6 +83,9 @@ export class AffItemSheet extends api.HandlebarsApplicationMixin(
     effects: {
       template: 'systems/aff2e/templates/item/effects.hbs',
     },
+    specialProperties: {
+      template: 'systems/aff2e/templates/item/special-properties.hbs',
+    }
   };
 
   /** @override */
@@ -93,13 +98,13 @@ export class AffItemSheet extends api.HandlebarsApplicationMixin(
     // Control which parts show based on document subtype
     switch (this.document.type) {
       case 'equipment':
-        options.parts.push('attributesEquipment');
+        options.parts.push('attributesEquipment', "specialProperties");
         break;
       case 'weapon':
-        options.parts.push('attributesWeapon', 'effects');
+        options.parts.push('attributesWeapon', "specialProperties", 'effects');
         break;
       case "armour":
-        options.parts.push('attributesArmour', 'effects');
+        options.parts.push('attributesArmour', "specialProperties", 'effects');
         break;
       case 'spell':
         options.parts.push('attributesSpell');
@@ -162,6 +167,7 @@ export class AffItemSheet extends api.HandlebarsApplicationMixin(
       case 'attributesSorcery':
       case 'attributesTalent':
       case 'attributesPriestAbility':
+      case 'specialProperties':
         // Necessary for preserving active tab on re-render
         context.tab = context.tabs[partId];
         break;
@@ -248,6 +254,9 @@ export class AffItemSheet extends api.HandlebarsApplicationMixin(
         tab.id = 'effects';
         tab.label += 'Effects';
         break;
+      case 'specialProperties':
+        tab.id = 'specialProperties';
+        tab.label += 'SpecialProperties';
     }
   }
 
@@ -396,6 +405,24 @@ export class AffItemSheet extends api.HandlebarsApplicationMixin(
   _getEffect(target) {
     const li = target.closest('.effect');
     return this.item.effects.get(li?.dataset?.effectId);
+  }
+
+  static async _createSpecialProperty(event, target) {
+    const item = this.item;
+    const specialProperty = {
+      item: "New Special Property"
+    };
+    const newArray = item.system.specialProperties;
+    newArray.push(specialProperty);
+    await item.update({ "system.specialProperties": newArray });
+  }
+
+  static async _deleteSpecialProperty(event, target) {
+    const item = this.item;
+    const index = target.dataset.index;
+    const newArray = item.system.specialProperties;
+    newArray.splice(index, 1);
+    await item.update({ "system.specialProperties": newArray });
   }
 
   /**

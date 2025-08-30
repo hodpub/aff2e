@@ -151,7 +151,8 @@
       "Tabs": {
         "Attributes": "Attributes",
         "Description": "Description",
-        "Effects": "Effects"
+        "Effects": "Effects",
+        "SpecialProperties": "Special Properties"
       },
       "base": {
         "FIELDS": {
@@ -171,7 +172,8 @@
             "label": "Quantity"
           },
           "quantityPerSlot.label": "Quantity per Slot",
-          "equipped.label": "Equipped"
+          "equipped.label": "Equipped",
+          "specialProperties.label": "Special Properties"
         }
       },
       "Weapon": {
