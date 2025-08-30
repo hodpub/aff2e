@@ -27,7 +27,7 @@ export async function migrate() {
 
     ui.notifications.warn(`Migrating your data to version ${key}. Please, wait until it finishes.`);
     await migrationList[key]();
-    ui.notifications.info(`Data migrated to version ${key}.`, { permanent: true });
+    ui.notifications.info(`Data migrated to version ${key}.`);
     latestMigration = key;
   }
   if (latestMigration)
