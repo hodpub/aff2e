@@ -54,7 +54,7 @@ export default class AffSorcerySpell extends AffItemBase {
 
   async roll(event) {
     const currentSkill = this.actor.system.getSkill(this.skillKey, this.moduleId);
-    if (!currentSkill) {
+    if (!currentSkill && this.actor.type == "character") {
       ui.notifications.error(this.noSkillError, { localize: true });
       return;
     }

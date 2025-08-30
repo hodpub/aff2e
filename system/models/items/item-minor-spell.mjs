@@ -23,7 +23,7 @@ export default class AffMinorSpell extends AffItemBase {
     }
 
     const currentSkill = this.actor.system.getSkill(AFF.Settings.minorMagicSkill.key);
-    if (!currentSkill) {
+    if (!currentSkill && this.actor.type == "character") {
       ui.notifications.error("AFF.Actor.base.errors.noMinorMagicSkill", { localize: true });
       return;
     }
