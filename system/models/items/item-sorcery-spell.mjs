@@ -39,10 +39,23 @@ export default class AffSorcerySpell extends AffItemBase {
     return this.componentInfo;
   }
 
+  get skillKey() {
+    return AFF.Settings.sorcerySkill.key;
+  }
+  get noSkillError() {
+    return "AFF.Actor.base.errors.noSorcerySkill";
+  }
+  get bonus() {
+    return this.actor.system.sorcerySpellRollBonus ?? 0;
+  }
+  get moduleId() {
+    return AFF.ID;
+  }
+
   async roll(event) {
-    const currentSkill = this.actor.system.getSkill(AFF.Settings.sorcerySkill.key);
+    const currentSkill = this.actor.system.getSkill(this.skillKey, this.moduleId);
     if (!currentSkill) {
-      ui.notifications.error("AFF.Actor.base.errors.noSorcerySkill", { localize: true });
+      ui.notifications.error(this.noSkillError, { localize: true });
       return;
     }
 
@@ -62,7 +75,7 @@ export default class AffSorcerySpell extends AffItemBase {
 
     const power = this.actor.system.characteristics.magic.value + (currentSkill?.system.value ?? 0);
 
-    const bonus = this.actor.system.sorcerySpellRollBonus ?? 0;
+    const bonus = this.bonus;
 
     const rollDialog = new AffRollDialog({
       actor: this.actor,
