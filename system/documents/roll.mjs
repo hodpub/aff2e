@@ -111,8 +111,8 @@ export default class AffRoll extends foundry.dice.Roll {
     let rollValue = null;
     let valuesHtml = "";
     if (this.options.values) {
-      const rollIndex = Math.min(Math.max(this.total - 1, 0), 6);
-      rollValue = this.options.values[rollIndex];
+      const rollIndex = Math.min(Math.max(this.total - 1, -1), 6);
+      rollValue = this.options.values[rollIndex] ?? 0;
 
       valuesHtml = `<div class="values">`;
       let firstLine = `<span class="selected"><i class="fa-solid fa-dice" aria-hidden="true"></i></span>`;
