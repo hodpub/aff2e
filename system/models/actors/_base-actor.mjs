@@ -56,7 +56,7 @@ export default class AffActorBase extends foundry.abstract.TypeDataModel {
       return;
     }
     let bd = {
-      ...this.bonuses["system.protectionRollBonus"],
+      ...this.bonuses["system.armourRollBonus"],
       [protections[0].name]: protections[0].system.protectionRollBonus,
     };
     const armourItem = {
