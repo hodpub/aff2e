@@ -34,6 +34,7 @@ globalThis.aff2e = {
   },
   utils: {
     tableHelper: new AffTableHelper(),
+    AffRoll,
   },
   models,
 };
