@@ -318,7 +318,7 @@ export class AffActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorSh
     }
 
     for (const s of Object.values(spells)) {
-      s.sort((a, b) => (a.sort || 0) - (b.sort || 0));
+      s.sort((a, b) => (a.system.value - b.system.value) || (a.sort || 0) - (b.sort || 0));
     }
 
     // Sort then assign
