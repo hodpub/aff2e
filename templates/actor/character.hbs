@@ -19,12 +19,11 @@
     <label>{{localize "AFF.Actor.character.FIELDS.sex.label"}}</label>
     <input class="simple" name='system.sex' type='text' value='{{system.sex}}' placeholder='M/F' />
   </div>
-
   {{#unless limited}}
   <div class="grid grid-gap-5">
     {{#each system.characteristics as | characteristic name |}}
     {{>"systems/aff2e/templates/actor/characteristics.hbs" name=name value=characteristic rollable=(isInList name
-    ../config.Actors.rollableCharacteristics)}}
+    ../config.Actors.rollableCharacteristics) flags=../flags}}
     {{/each}}
     <div class="flag single characteristic experience">
       <label>{{localize "AFF.Actor.character.FIELDS.experience.label"}}</label>

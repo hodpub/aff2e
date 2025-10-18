@@ -1,7 +1,13 @@
 <div class="flag characteristic {{name}}">
   <label {{#if rollable}}data-action="roll" data-roll-type="{{name}}" data-drag="special"
     data-macro-name="{{localize (concat "AFF.Characteristics." name ".label" )}}" class="rollable draggable"
-    {{/if}}>{{localize (concat "AFF.Characteristics." name ".label")}}</label>
+    {{/if}}>
+    {{#if (lookup (lookup (lookup flags "aff2e") "overrideLabel") name)}}
+      {{localize (lookup (lookup (lookup flags "aff2e") "overrideLabel") name)}}
+    {{else}}
+      {{localize (concat "AFF.Characteristics." name ".label")}}
+    {{/if}}
+  </label>
   <label>{{localize "AFF.Characteristics.initial"}}</label>
   <input class="simple" name='system.characteristics.{{name}}.max' type='number' value='{{value.max}}' />
   <label>{{localize "AFF.Characteristics.current"}}</label>
