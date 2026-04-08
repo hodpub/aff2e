@@ -3,6 +3,7 @@
     "Characteristics": {
       "skill.label": "Skill",
       "stamina.label": "Stamina",
+      "hull.label": "Hull",
       "luck.label": "Luck",
       "magic.label": "Magic",
       "magicPoints.label": "Magic Points",
