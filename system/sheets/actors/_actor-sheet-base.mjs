@@ -701,7 +701,7 @@ export class AffActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorSh
     if (!this.actor.isOwner) return;
     if (this.actor.uuid === item.parent?.uuid) return this._onSortItem(event, item);
 
-    if (this.document.type === "npc" && !["weapon", "armour", "talent"].includes(item.type)) {
+    if (this.document.type === "npc" && !["weapon", "armour", "talent", "specialSkill"].includes(item.type)) {
       ui.notifications.warn(game.i18n.localize("AFF.Actor.npc.WARN.itemTYpeNotAllowed"));
       return;
     }
