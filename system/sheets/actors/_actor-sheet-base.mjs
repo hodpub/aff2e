@@ -42,6 +42,14 @@ export class AffActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorSh
     }
   };
 
+  static NOT_TAB = [
+    'character',
+    'npc',
+    'tabs',
+    'verticalRule',
+    'horizontalRule'
+  ];
+
   /** @override */
   static PARTS = {
     character: {
@@ -236,18 +244,11 @@ export class AffActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorSh
         // Run through localization
         label: 'AFF.Actor.Tabs.',
       };
-      switch (partId) {
-        case 'character':
-        case 'npc':
-        case 'tabs':
-        case "horizontalRule":
-        case "verticalRule":
-          return tabs;
-        default:
-          tab.id = partId;
-          tab.label += partId.charAt(0).toUpperCase() + partId.slice(1);
-          break;
-      }
+      if (this.constructor.NOT_TAB.includes(partId)) return tabs;
+    
+      tab.id = partId;
+      tab.label += partId.charAt(0).toUpperCase() + partId.slice(1);
+    
       if (this.tabGroups[tabGroup] === tab.id) tab.cssClass = 'active';
       tabs[partId] = tab;
       return tabs;
@@ -700,7 +701,7 @@ export class AffActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorSh
     if (!this.actor.isOwner) return;
     if (this.actor.uuid === item.parent?.uuid) return this._onSortItem(event, item);
 
-    if (this.document.type === "npc" && !["weapon", "armour", "talent"].includes(item.type)) {
+    if (this.document.type === "npc" && !["weapon", "armour", "talent", "specialSkill"].includes(item.type)) {
       ui.notifications.warn(game.i18n.localize("AFF.Actor.npc.WARN.itemTYpeNotAllowed"));
       return;
     }

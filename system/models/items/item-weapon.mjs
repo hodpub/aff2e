@@ -29,11 +29,7 @@ export default class AffWeapon extends AffEquipment {
   }
 
   prepareDerivedData() {
-    this.priceInfo = {
-      city: toPriceInfo(this.price.city),
-      town: toPriceInfo(this.price.town),
-      village: toPriceInfo(this.price.village),
-    };
+    super.prepareDerivedData();
     this.values = this.damage;
     this.icon = "sword";
   }
