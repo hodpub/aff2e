@@ -31,6 +31,8 @@ export default class AffEquipment extends AffItemBase {
   }
 
   prepareDerivedData() {
+    if (!this.price)
+      return;
     this.priceInfo = {
       city: toPriceInfo(this.price.city),
       town: toPriceInfo(this.price.town),
