@@ -4,6 +4,7 @@ import { AffItem } from './documents/item.mjs';
 import AffActiveEffect from "./documents/active-effect.mjs";
 import AffRoll from "./documents/roll.mjs";
 import AffRollDialog from "./applications/roll-dialog.mjs";
+import { BreakdownHelper } from "./helpers/breakdown.mjs";
 // Import sheet classes.
 import * as sheets from "./sheets/_imports.mjs";
 // Import helper/utility classes and constants.
@@ -37,6 +38,7 @@ globalThis.aff2e = {
     tableHelper: new AffTableHelper(),
     AffRoll,
     AffRollDialog,
+    BreakdownHelper,
   },
   models,
 };
