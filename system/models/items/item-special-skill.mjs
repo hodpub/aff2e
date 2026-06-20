@@ -29,6 +29,7 @@ export default class AffSpecialSkill extends AffItemBase {
       initial: AFF.Skills.rollCharacteristicConstants.skill,
     });
     schema.value = new fields.NumberField({ ...DataHelper.requiredInteger, initial: 1, min: 0 });
+    schema.physicalSkill = new fields.BooleanField({ initial: true });
 
     return schema;
   }
@@ -92,7 +93,7 @@ export default class AffSpecialSkill extends AffItemBase {
       ...additionalBonus,
       ...this.actor.system.bonuses[`system.specialSkillBonus.${this.category}`],
       ...this.actor.system.bonuses[`system.specialSkillBonus.${this.parent.id}`],
-    });
+    }, this.physicalSkill);
     const rollDialog = new AffRollDialog({ actor: this.actor, item: this.item, target, breakdown, rollTypeSelected, rollName });
     const result = await rollDialog.wait(event);
     return result;

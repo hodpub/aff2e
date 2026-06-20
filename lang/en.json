@@ -245,7 +245,8 @@
             "magic.label": "Magic",
             "higher.label": "Higher"
           },
-          "value.label": "Value"
+          "value.label": "Value",
+          "physicalSkill.label": "Physical Skill"
         },
         "WARN": {
           "valueTooHigh": {

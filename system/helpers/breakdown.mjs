@@ -1,6 +1,8 @@
 export class BreakdownHelper {
-  static init(breakdown) {
+  static init(breakdown, physical = true) {
     const clean = this.clean(breakdown);
+    if (!physical)
+      delete clean[game.i18n.localize("AFF.Item.Armour.ERRORS.armourUnproficient")];
     const bonus = this.getBonus(clean);
     return [clean, bonus];
   }
