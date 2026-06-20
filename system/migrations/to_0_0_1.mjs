@@ -14,6 +14,4 @@ export async function migrateTo_0_0_1() {
       return;
     await element.update({ "type": "armour", "system": element.system, "img": "modules/aff2e-core/assets/icons/armour.svg" }, { recursive: false });
   });
-
-
 }

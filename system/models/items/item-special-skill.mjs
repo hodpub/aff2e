@@ -36,7 +36,7 @@ export default class AffSpecialSkill extends AffItemBase {
 
   async _preUpdate(changes, options, user) {
     super._preUpdate?.(changes, options, user);
-    if (!this.parent.isEmbedded || this.actor.type != "character")
+    if (!this.parent.isEmbedded || this.actor.type != "character" || CONFIG.AFF.disableSkillMaxLevelValidation)
       return;
 
     const rollCharacteristic = changes.rollCharacteristic ?? this.rollCharacteristic;
